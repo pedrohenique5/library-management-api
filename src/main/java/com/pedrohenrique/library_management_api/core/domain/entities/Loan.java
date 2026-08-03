@@ -72,4 +72,27 @@ public class Loan {
     public void setStatus(LoanStatus status) {
         this.status = status;
     }
+    public void renew(int additionalDays) {
+        if (status == LoanStatus.LATE) {
+            throw new IllegalStateException("Cannot renew a late loan");
+        }
+        if (renewed) {
+            throw new IllegalStateException("Loan has already been renewed");
+        }
+        this.dueDate = this.dueDate.plusDays(additionalDays);
+        this.renewed = true;
+
+    }
+
+    public void markAsReturned() {
+        this.returnDate = LocalDate.now();
+        this.status = LoanStatus.RETURNED;
+    }
+
+    public boolean isLate(LocalDate today) {
+        if (returnDate != null) {
+            return returnDate.isAfter(dueDate);
+        }
+        return today.isAfter(dueDate);
+    }
 }

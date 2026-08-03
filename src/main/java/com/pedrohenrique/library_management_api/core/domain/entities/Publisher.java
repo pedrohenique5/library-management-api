@@ -8,8 +8,8 @@ public class Publisher {
 
     public Publisher(Long id, String name, String cnpj, String phone) {
         this.id = id;
-        this.name = name;
-        this.cnpj = cnpj;
+        setName(name);
+        setCnpj(cnpj);
         this.phone = phone;
     }
 
@@ -22,9 +22,15 @@ public class Publisher {
         this.id = id;
     }
     public void setName(String name) {
+        if (name == null || name.isBlank()) {
+            throw new IllegalArgumentException("name is required");
+        }
         this.name = name;
     }
     public void setCnpj(String cnpj) {
+        if (cnpj != null && !cnpj.matches("^\\d{2}\\.\\d{3}\\.\\d{3}/\\d{4}-\\d{2}$")) {
+            throw new IllegalArgumentException("CNPJ format is invalid. Expected format: XX.XXX.XXXX/XXXX-XX");
+        }
         this.cnpj = cnpj;
     }
     public void setPhone(String phone) {

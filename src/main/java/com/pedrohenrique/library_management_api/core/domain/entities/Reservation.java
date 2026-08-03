@@ -40,4 +40,16 @@ public class Reservation {
     public void setStatus(ReservationStatus status) {
         this.status = status;
     }
+
+    public void cancel() {
+        this.status = ReservationStatus.CANCELED;
+    }
+
+    public void expire() {
+        this.status = ReservationStatus.EXPIRED;
+    }
+
+    public void fulfill() {
+        this.status = ReservationStatus.FULFILLED;
+    }
 }

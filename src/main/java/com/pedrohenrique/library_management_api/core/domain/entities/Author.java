@@ -10,7 +10,7 @@ public class Author {
 
     public Author(Long id, String name, String nationality, LocalDate birthDate) {
         this.id = id;
-        this.name = name;
+        setName(name);
         this.nationality = nationality;
         this.birthDate = birthDate;
     }
@@ -24,6 +24,9 @@ public class Author {
         this.id = id;
     }
     public void setName(String name) {
+        if (name == null || name.isBlank()) {
+            throw new IllegalArgumentException("name is required");
+        }
         this.name = name;
     }
     public void setNationality(String nationality) {

@@ -60,4 +60,13 @@ public class Fine {
     public void setStatus(FineStatus status) {
         this.status = status;
     }
+
+    public void pay() {
+        this.paymentDate = LocalDate.now();
+        this.status = FineStatus.PAID;
+    }
+
+    public void waive() {
+        this.status = FineStatus.WAIVED;
+    }
 }

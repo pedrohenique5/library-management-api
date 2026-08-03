@@ -7,7 +7,7 @@ public class Category {
 
     public Category(Long id, String name, String description) {
         this.id = id;
-        this.name = name;
+        setName(name);
         this.description = description;
     }
 
@@ -19,6 +19,9 @@ public class Category {
         this.id = id;
     }
     public void setName(String name) {
+        if (name == null || name.isBlank()) {
+            throw new IllegalArgumentException("name is required");
+        }
         this.name = name;
     }
     public void setDescription(String description) {

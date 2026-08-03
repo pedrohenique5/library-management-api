@@ -15,10 +15,10 @@ public class Employee {
                     LocalDate hireDate, BigDecimal salary) {
         this.id = id;
         this.userId = userId;
-        this.registrationNumber = registrationNumber;
-        this.position = position;
+        setRegistrationNumber(registrationNumber);
+        setPosition(position);
         this.hireDate = hireDate;
-        this.salary = salary;
+        setSalary(salary);
     }
 
     public Long getId() { return id; }
@@ -30,8 +30,23 @@ public class Employee {
 
     public void setId(Long id) { this.id = id; }
     public void setUserId(Long userId) { this.userId = userId; }
-    public void setRegistrationNumber(String registrationNumber) { this.registrationNumber = registrationNumber; }
-    public void setPosition(String position) { this.position = position; }
+    public void setRegistrationNumber(String registrationNumber) {
+        if (registrationNumber == null || registrationNumber.isBlank()) {
+            throw new IllegalArgumentException("registrationNumber is required");
+        }
+        this.registrationNumber = registrationNumber;
+    }
+    public void setPosition(String position) {
+        if (position == null || position.isBlank()) {
+            throw new IllegalArgumentException("position is required");
+        }
+        this.position = position;
+    }
     public void setHireDate(LocalDate hireDate) { this.hireDate = hireDate; }
-    public void setSalary(BigDecimal salary) { this.salary = salary; }
+    public void setSalary(BigDecimal salary) {
+        if (salary != null && salary.compareTo(BigDecimal.ZERO) < 0) {
+            throw new IllegalArgumentException("salary cannot be negative");
+        }
+        this.salary = salary;
+    }
 }

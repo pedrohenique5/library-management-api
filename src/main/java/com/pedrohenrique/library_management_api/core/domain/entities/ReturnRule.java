@@ -8,7 +8,7 @@ public class ReturnRule {
 
     public ReturnRule(Long id, BigDecimal finePerDayLate) {
         this.id = id;
-        this.finePerDayLate = finePerDayLate;
+        setFinePerDayLate(finePerDayLate);
     }
 
     public Long getId() { return id; }
@@ -18,6 +18,9 @@ public class ReturnRule {
         this.id = id;
     }
     public void setFinePerDayLate(BigDecimal finePerDayLate) {
+        if (finePerDayLate != null && finePerDayLate.compareTo(BigDecimal.ZERO) < 0) {
+            throw new IllegalArgumentException("finePerDayLate cannot be negative");
+        }
         this.finePerDayLate = finePerDayLate;
     }
 }

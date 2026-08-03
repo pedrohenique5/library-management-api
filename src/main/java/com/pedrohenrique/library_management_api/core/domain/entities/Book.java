@@ -16,8 +16,8 @@ public class Book {
     public Book(Long id, String title, String isbn, String synopsis, Integer publicationYear,
                 Integer pageCount, Long categoryId, Long publisherId, List<Long> authorIds) {
         this.id = id;
-        this.title = title;
-        this.isbn = isbn;
+        setTitle(title);
+        setIsbn(isbn);
         this.synopsis = synopsis;
         this.publicationYear = publicationYear;
         this.pageCount = pageCount;
@@ -40,9 +40,15 @@ public class Book {
         this.id = id;
     }
     public void setTitle(String title) {
+        if (title == null || title.isBlank()) {
+            throw new IllegalArgumentException("title is required");
+        }
         this.title = title;
     }
     public void setIsbn(String isbn) {
+        if (isbn != null && !isbn.matches("^(?:ISBN(?:-1[03])?:? )?(?=[0-9X]{10}$|(?=(?:[0-9]+[- ]){3})[- 0-9X]{13}$|97[89][0-9]{10}$|(?=(?:[0-9]+[- ]){4})[- 0-9]{17}$)(?:97[89][- ]?)?[0-9]{1,5}[- ]?[0-9]+[- ]?[0-9]+[- ]?[0-9X]$")) {
+            throw new IllegalArgumentException("ISBN format is invalid");
+        }
         this.isbn = isbn;
     }
     public void setSynopsis(String synopsis) {

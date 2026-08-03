@@ -11,7 +11,7 @@ public class Copy {
     public Copy(Long id, Long bookId, String assetCode, CopyStatus status) {
         this.id = id;
         this.bookId = bookId;
-        this.assetCode = assetCode;
+        setAssetCode(assetCode);
         this.status = status;
     }
 
@@ -27,6 +27,12 @@ public class Copy {
         this.bookId = bookId;
     }
     public void setAssetCode(String assetCode) {
+        if (assetCode == null || assetCode.isBlank()) {
+            throw new IllegalArgumentException("assetCode is required");
+        }
+        if (!assetCode.matches("^[A-Z]{2}-\\d{4}-\\d{3}$")) {
+            throw new IllegalArgumentException("assetCode format is invalid. Expected format: XX-XXXX-XXX");
+        }
         this.assetCode = assetCode;
     }
     public void setStatus(CopyStatus status) {
