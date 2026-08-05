@@ -44,7 +44,7 @@ public class User {
     public User(String name, String cpf, String phone, String password, String email,
                 LocalDate birthDate, Long addressId, Role role, Long profileId, Integer customLoanLimit) {
         this(null, name, cpf, phone, password, email, birthDate, LocalDateTime.now(), true,
-             addressId, role, profileId, customLoanLimit);
+                addressId, role, profileId, customLoanLimit);
     }
 
     public Long getId() {
