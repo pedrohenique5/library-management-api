@@ -1,9 +1,8 @@
-package com.pedrohenrique.library_management_api.core.application.usecases;
+package com.pedrohenrique.library_management_api.core.application.usecases.auth;
 
 import com.pedrohenrique.library_management_api.core.application.contracts.repositories.UserRepository;
 import com.pedrohenrique.library_management_api.core.application.dtos.RegisterRequestDTO;
 import com.pedrohenrique.library_management_api.core.domain.entities.User;
-import lombok.NoArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 

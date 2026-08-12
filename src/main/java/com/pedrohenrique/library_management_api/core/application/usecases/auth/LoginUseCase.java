@@ -1,4 +1,4 @@
-package com.pedrohenrique.library_management_api.core.application.usecases;
+package com.pedrohenrique.library_management_api.core.application.usecases.auth;
 
 import com.pedrohenrique.library_management_api.core.application.contracts.repositories.UserRepository;
 import com.pedrohenrique.library_management_api.core.application.dtos.AuthResponseDTO;
@@ -6,8 +6,11 @@ import com.pedrohenrique.library_management_api.core.application.dtos.LoginReque
 import com.pedrohenrique.library_management_api.core.application.exceptions.InvalidCredentialsException;
 import com.pedrohenrique.library_management_api.core.domain.entities.User;
 import com.pedrohenrique.library_management_api.infra.security.JwtService;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
 
+@Component
 public class LoginUseCase  {
 
     private final UserRepository userRepository;
