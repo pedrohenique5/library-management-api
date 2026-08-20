@@ -6,7 +6,6 @@ import com.pedrohenrique.library_management_api.core.application.dtos.LoginReque
 import com.pedrohenrique.library_management_api.core.application.exceptions.InvalidCredentialsException;
 import com.pedrohenrique.library_management_api.core.domain.entities.User;
 import com.pedrohenrique.library_management_api.infra.security.JwtService;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
@@ -39,6 +38,6 @@ public class LoginUseCase  {
         }
 
         String token = jwtService.generateToken(user);
-        return new AuthResponseDTO(token, user.getId(), user.getName(), user.getRole().name());
+        return new AuthResponseDTO(token);
     }
 }
