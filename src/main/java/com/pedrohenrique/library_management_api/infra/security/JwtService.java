@@ -3,6 +3,7 @@ package com.pedrohenrique.library_management_api.infra.security;
 import com.pedrohenrique.library_management_api.core.domain.entities.User;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
@@ -11,10 +12,12 @@ import java.util.Date;
 @Component
 public class JwtService {
 
-    private final SecretKey secretKey = Keys.hmacShaKeyFor(
-            "f2A9xLm8Qw3N7vBc5YpR1tHs6ZjK4uEd9MnX2gVa8CfPw5TbL7kHy3DsQ1rUe6".getBytes()
-    );
+    private final SecretKey secretKey;
     private final long expirationMs = 86_400_000;
+
+    public JwtService(@Value("${jwt.secret}") String secret) {
+        this.secretKey = Keys.hmacShaKeyFor(secret.getBytes());
+    }
 
     public String generateToken(User user) {
         return Jwts.builder()

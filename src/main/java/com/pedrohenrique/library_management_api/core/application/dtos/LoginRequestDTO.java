@@ -1,8 +1,0 @@
-package com.pedrohenrique.library_management_api.core.application.dtos;
-
-public record LoginRequestDTO(
-
-        String email,
-        String password
-) {
-}

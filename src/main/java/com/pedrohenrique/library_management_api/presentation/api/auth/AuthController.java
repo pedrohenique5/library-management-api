@@ -1,8 +1,8 @@
 package com.pedrohenrique.library_management_api.presentation.api.auth;
 
-import com.pedrohenrique.library_management_api.core.application.dtos.AuthResponseDTO;
-import com.pedrohenrique.library_management_api.core.application.dtos.LoginRequestDTO;
-import com.pedrohenrique.library_management_api.core.application.dtos.RegisterRequestDTO;
+import com.pedrohenrique.library_management_api.core.application.dtos.user.response.AuthResponseDTO;
+import com.pedrohenrique.library_management_api.core.application.dtos.user.request.LoginRequestDTO;
+import com.pedrohenrique.library_management_api.core.application.dtos.user.request.RegisterRequestDTO;
 import com.pedrohenrique.library_management_api.core.application.usecases.auth.LoginUseCase;
 import com.pedrohenrique.library_management_api.core.application.usecases.auth.RegisterUserUseCase;
 import org.springframework.http.HttpStatus;
